@@ -5,21 +5,32 @@ CREATE TABLE departments (
     dept_name VARCHAR(30),   
     PRIMARY KEY (dept_no)
 );
--- made both primary keysss - makes composite? NEED To check - employees definitely in multiple depts
+
 CREATE TABLE dept_emp (
     emp_no INTEGER NOT NULL,
     dept_no VARCHAR(10) NOT NULL,
-    PRIMARY KEY (emp_no, dept_no)
-      
+    PRIMARY KEY (emp_no, dept_no)      
 );
 
 CREATE TABLE dept_manager (
     dept_no VARCHAR(10) NOT NULL,
     emp_no INTEGER NOT NULL,
-    PRIMARY KEY (dept_no, emp_no)
-    
+    PRIMARY KEY (dept_no, emp_no)    
 );    
   
+CREATE TABLE salaries (
+    emp_no INTEGER NOT NULL,
+    salary INTEGER,
+    PRIMARY KEY (emp_no)  
+);
+
+CREATE TABLE titles (
+  
+    title_id VARCHAR(10) NOT NULL,
+    title VARCHAR(30),
+    PRIMARY KEY (title_id)
+);
+
 CREATE TABLE employees (
     emp_no INTEGER NOT NULL,
     title_id VARCHAR(10) NOT NULL,
@@ -31,19 +42,3 @@ CREATE TABLE employees (
     PRIMARY KEY (emp_no),
     FOREIGN KEY (title_id) REFERENCES titles(title_id)
 );
-
-CREATE TABLE salaries (
-    emp_no INTEGER NOT NULL,
-    salary INTEGER,
-    PRIMARY KEY (emp_no)
-   
-);
-
-CREATE TABLE titles (
-  
-    title_id VARCHAR(10) NOT NULL,
-    title VARCHAR(30),
-    PRIMARY KEY (title_id)
-);
-
-
