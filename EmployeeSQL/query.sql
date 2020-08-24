@@ -19,7 +19,7 @@ SELECT first_name,
 FROM employees
 WHERE
     hire_date >= '1986-01-01'
-    AND hire_date <= '1986-12-31'
+    AND hire_date <= '1986-12-31';
 
 --3.List the manager of each department with the following info: dept. number, dept. name,  
 -- manager's emp number, last name, first name
@@ -83,45 +83,3 @@ SELECT last_name, COUNT(last_name) AS "Frequency"
 FROM employees 
 GROUP By last_name
 ORDER By "Frequency" DESC;
-
-
-
-SELECT s.store_id, SUM(amount) AS Gross
-FROM payment AS p
-  JOIN rental AS r
-  ON (p.rental_id = r.rental_id)
-    JOIN inventory AS i
-    ON (i.inventory_id = r.inventory_id)
-      JOIN store AS s
-      ON (s.store_id = i.store_id)
-      GROUP BY s.store_id;
-
--- Join all three tables
-SELECT owners.owner_name,
-pet_names_new.pet_name, pet_names_new.type, service.service_type
-FROM owners
-INNER JOIN pet_names_new ON owners.ID = pet_names_new.owner_id
-INNER JOIN service ON service.id = pet_names_new.service_id;
-
--- Join Tables using foreign keys???
-SELECT customer.first_name, customer.last_name, email.email, phone.phone
-FROM customer
-JOIN customer_email AS email
-  ON customer.id = email.customer_id
-JOIN customer_phone AS phone
-  ON customer.id = phone.customer_id;
-
-SELECT children.child_name, child_parent.child_id, parents.parent_name, child_parent.parent_id
-FROM children
-LEFT JOIN child_parent
-ON child_parent.child_id = children.child_id
-LEFT JOIN parents
-ON child_parent.parent_id = parents.parent_id;
-
--- A join statement to query all courses taken by students
-SELECT s.id, s.last_name, s.first_name, c.id, c.course_name, j.course_term
-FROM students s
-LEFT JOIN student_courses_junction j
-ON s.id = j.student_id
-LEFT JOIN courses c
-ON c.id = j.course_id;
