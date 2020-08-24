@@ -2,14 +2,14 @@
 
 -- 1.List following details of each employee: employee number, last name, first name, sex and salary
 
-SELECT employees.emp_no,
-  employees.last_name,
-  employees.first_name,
-  employees.sex,
-  salaries.salary
-FROM employees 
-INNER JOIN salaries ON
-employees.emp_no = salaries.emp_no;
+SELECT e.emp_no,
+  e.last_name,
+  e.first_name,
+  e.sex,
+  s.salary
+FROM employees e
+INNER JOIN salaries s 
+ON e.emp_no = s.emp_no;
 
 -- 2.List first name, last name and hire date for employees who were hired in 1986
 
@@ -49,26 +49,33 @@ SELECT
 --5. List first name, last name, and sex for employees whose first name is "Hercules" and last names 
 -- begin with "B".
 
-SELECT e.first_name, e.last_name, e.sex
+SELECT e.first_name, e.last_name, e.sex,
 FROM employees e
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 --6. List all employees in the Sales department, including their employee number, last name, first name
 -- and department name
 
-
-
-
-
-
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM employees e
+INNER JOIN dept_emp c 
+ON e.emp_no = c.emp_no
+INNER JOIN departments d 
+ON c.dept_no = d.dept_no
+WHERE dept_name = 'Sales';
 
 --7. List all employees in the Sales and Development departments, including their employee number, 
 -- last name, first name and department name
 
-
-
-
-
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM employees e
+INNER JOIN dept_emp c 
+ON e.emp_no = c.emp_no
+INNER JOIN departments d 
+ON c.dept_no = d.dept_no
+WHERE 
+  dept_name = 'Sales'
+  OR dept_name = 'Development';
 
 --8. In descending, list the frequency count of employee last names, i.e., how many employees share each 
 -- last name
@@ -108,3 +115,18 @@ JOIN customer_email AS email
   ON customer.id = email.customer_id
 JOIN customer_phone AS phone
   ON customer.id = phone.customer_id;
+
+SELECT children.child_name, child_parent.child_id, parents.parent_name, child_parent.parent_id
+FROM children
+LEFT JOIN child_parent
+ON child_parent.child_id = children.child_id
+LEFT JOIN parents
+ON child_parent.parent_id = parents.parent_id;
+
+-- A join statement to query all courses taken by students
+SELECT s.id, s.last_name, s.first_name, c.id, c.course_name, j.course_term
+FROM students s
+LEFT JOIN student_courses_junction j
+ON s.id = j.student_id
+LEFT JOIN courses c
+ON c.id = j.course_id;
