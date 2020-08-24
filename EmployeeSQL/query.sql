@@ -1,26 +1,26 @@
--- Join players with seasons_stats
-SELECT players.id,
-  players.player,
-  players.height,
-  players.weight,
-  players.college,
-  players.born,
-  seasons_stats.position,
-  seasons_stats.tm
-FROM players
-INNER JOIN seasons_stats ON
-players.id = seasons_stats.player_id;
 
 
--- Join seasons_stats with players
-SELECT seasons_stats.player_id,
-  players.college,
-  seasons_stats.year,
-  seasons_stats.position,
-  seasons_stats.Two_Point_Percentage,
-  seasons_stats.FG_Percentage,
-  seasons_stats.FT_Percentage,
-  seasons_stats.TS_Percentage
-FROM seasons_stats
-INNER JOIN players ON
-players.id = seasons_stats.player_id;
+-- List following details of each employee: employee number, last name, first name, sex and salary
+
+SELECT employees.emp_no,
+  employees.last_name,
+  employees.first_name,
+  employees.sex,
+  salaries.salary
+FROM employees
+INNER JOIN salaries ON
+employees.emp_no = salaries.emp_no;
+
+-- List first name, last name and hire date for employees who were hired in 1986
+
+SELECT 
+
+
+
+
+
+
+
+--list the manager of each department with the following info: dept. number, dept. name, manager's emp 
+--number last name, first name
+
