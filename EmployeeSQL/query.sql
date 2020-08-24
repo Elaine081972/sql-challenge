@@ -39,7 +39,7 @@ p.player_id=m.loser_id;
 --4. List the department of each employee with the following info: employee #, last name, first name, and 
 -- department name
 
-SELECT 
+
 
 
 
@@ -51,7 +51,8 @@ SELECT
 
 SELECT e.first_name, e.last_name, e.sex,
 FROM employees e
-WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+WHERE first_name = 'Hercules' 
+  AND last_name LIKE 'B%';
 
 --6. List all employees in the Sales department, including their employee number, last name, first name
 -- and department name
@@ -80,14 +81,10 @@ WHERE
 --8. In descending, list the frequency count of employee last names, i.e., how many employees share each 
 -- last name
 
-
-
--- Order by descending values
-SELECT rental_rate, ROUND(AVG(length),2) AS "avg length"
-FROM film
-GROUP BY rental_rate
-ORDER BY "avg length" DESC;
-
+SELECT last_name, COUNT(last_name) AS "Frequency"
+FROM employees 
+GROUP By last_name
+ORDER By "Frequency" DESC;
 
 
 
