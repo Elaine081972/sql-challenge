@@ -1,6 +1,6 @@
 # sql-challenge
 
-In this assignment - Employee Database: A mystery in two parts
+In this assignment - Employee Database: A mystery in two parts,
 we are tasked with rejuvenating CSV employee files from the 1980's and 1990's. We are responsible
 for designing the tables to hold the six CSV file, import the CSV files into a SQL database and provide Data Analysis once the Data Engineering is complete.
 
