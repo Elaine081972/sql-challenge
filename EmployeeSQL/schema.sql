@@ -1,4 +1,4 @@
--- Create schemas
+-- Create schema
 -- Create tables
 
 CREATE TABLE departments (

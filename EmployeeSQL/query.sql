@@ -1,4 +1,5 @@
-
+--Data Analysis
+--Query Tables
 
 -- 1.List following details of each employee: employee number, last name, first name, sex and salary
 
